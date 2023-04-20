@@ -11,6 +11,11 @@ namespace FormApp
             InitializeComponent();
         }
 
+        public void hihi()
+        {
+            InitializeComponent();
+        }
+
         private void bCancel_Click(object sender, EventArgs e)
         {
             this.Close();
