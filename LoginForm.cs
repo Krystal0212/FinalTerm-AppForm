@@ -6,6 +6,11 @@ namespace FormApp
 {
     public partial class LoginForm : Form
     {
+ 
+        public int mmb()
+        {
+            return 0;
+        }
         public LoginForm()
         {
             InitializeComponent();
