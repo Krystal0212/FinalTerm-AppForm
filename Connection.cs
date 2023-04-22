@@ -13,7 +13,7 @@ namespace FormApp
         private static SqlConnection cn;
         public static void connect()
         {
-            string s = "initial catalog = distributorManage; data source = ACERLT; integrated security = true";
+            string s = "initial catalog = distributorManage; data source = DESKTOP-502NHKM\\DUNG; integrated security = true";
             cn = new SqlConnection(s);
             cn.Open();
 

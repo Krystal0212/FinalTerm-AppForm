@@ -17,3 +17,17 @@ insert into account values ('SmartKelvin0212','hihi','admin'),
 						   (N'Anh Hai Ếch Tiền Giang','123','agent');
 
 SELECT username as Account, CONVERT(VARCHAR(32), HashBytes('MD5', pass), 2)as SerializedPass from account
+
+create table CurrentGoods (
+	goodID nvarchar(30) ,
+	goodName nvarchar(30),
+	Quantity int,
+	Price int
+)
+
+insert into CurrentGoodsasd
+						   ('admin','admin','admin'),
+						   (N'Dũng Lương','mmb','admin'),
+						   ('helen','123','agent'),
+						   ('Main che mắt','allgirlsaremine','agent'),
+						   (N'Anh Hai Ếch Tiền Giang','123','agent');
