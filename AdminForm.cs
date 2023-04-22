@@ -171,6 +171,62 @@ namespace FormApp
             form_load();
         }
 
+        public Boolean isExist(string txt)
+        {
+            string sql = "select username from account where goodID = N'" + txt + "' ";
+            DataTable dt = Connection.selectQuery(sql);
+            if (countCheck(dt.Rows.Count))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private string checkCurrentID(string tableName, string IDName)
+        {
+            string sql = " select * from " + tableName + " order by " + IDName + "";
+            DataTable dt = Connection.selectQuery(sql);
+
+
+            return dt.Rows[dt.Rows.Count - 1][0].ToString();
+        }
+
+        private string getID(string ma, string tableName, string IDName)
+        {
+            string slang = "";
+            if (isExist(ma + "0001"))
+            {
+                slang = ma + "0001";
+            }
+            else
+            {
+                string maIDtruoc = checkCurrentID(tableName, IDName);
+                int txtNum = Int16.Parse(maIDtruoc.Substring(maIDtruoc.Length - 4));
+                slang = ma + generateID(txtNum);
+            }
+
+            return slang;
+        }
+
+        private string generateID(int num)
+        {
+            string res = (++num).ToString();
+            int checker = 10;
+            while (res.Length < 4)
+            {
+                double a = res.Length;
+                if (Int16.Parse(res) > checker)
+                {
+                    checker = checker * 10;
+                }
+                else
+                {
+                    res = "0" + res;
+                }
+            }
+            return res;
+        }
+
         private string convertDate (DateTimePicker d)
         {
             DateTime date = d.Value;
