@@ -132,12 +132,12 @@
             // 
             // bSave
             // 
-            this.bSave.Location = new System.Drawing.Point(350, 94);
-            this.bSave.Name = "bSave";
-            this.bSave.Size = new System.Drawing.Size(91, 23);
-            this.bSave.TabIndex = 10;
-            this.bSave.Text = "Save";
-            this.bSave.UseVisualStyleBackColor = true;
+            bSave.Location = new Point(350, 94);
+            bSave.Name = "bSave";
+            bSave.Size = new Size(91, 23);
+            bSave.TabIndex = 10;
+            bSave.Text = "Save";
+            bSave.UseVisualStyleBackColor = true;
             // 
             // bEdit
             // 
@@ -171,10 +171,10 @@
             // 
             // dtp
             // 
-            this.dtp.Location = new System.Drawing.Point(253, 22);
-            this.dtp.Name = "dtp";
-            this.dtp.Size = new System.Drawing.Size(200, 23);
-            this.dtp.TabIndex = 6;
+            dtp.Location = new Point(253, 22);
+            dtp.Name = "dtp";
+            dtp.Size = new Size(200, 23);
+            dtp.TabIndex = 6;
             // 
             // txtTotalprice
             // 
@@ -223,22 +223,22 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.grd1);
-            this.groupBox2.Location = new System.Drawing.Point(491, 12);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(489, 459);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Current goods in stock";
+            groupBox2.Controls.Add(grd1);
+            groupBox2.Location = new Point(491, 12);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(489, 459);
+            groupBox2.TabIndex = 1;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Current goods in stock";
             // 
             // grd1
             // 
-            this.grd1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grd1.Location = new System.Drawing.Point(6, 22);
-            this.grd1.Name = "grd1";
-            this.grd1.RowTemplate.Height = 25;
-            this.grd1.Size = new System.Drawing.Size(477, 431);
-            this.grd1.TabIndex = 0;
+            grd1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            grd1.Location = new Point(6, 22);
+            grd1.Name = "grd1";
+            grd1.RowTemplate.Height = 25;
+            grd1.Size = new Size(477, 431);
+            grd1.TabIndex = 0;
             // 
             // groupBox3
             // 
@@ -254,12 +254,12 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(244, 118);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(123, 23);
-            this.button3.TabIndex = 9;
-            this.button3.Text = "Clear all stuffs";
-            this.button3.UseVisualStyleBackColor = true;
+            button3.Location = new Point(244, 118);
+            button3.Name = "button3";
+            button3.Size = new Size(123, 23);
+            button3.TabIndex = 9;
+            button3.Text = "Clear all stuffs";
+            button3.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
@@ -272,13 +272,13 @@
             // 
             // grd2
             // 
-            this.grd2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grd2.Location = new System.Drawing.Point(6, 22);
-            this.grd2.Name = "grd2";
-            this.grd2.RowTemplate.Height = 25;
-            this.grd2.Size = new System.Drawing.Size(461, 90);
-            this.grd2.TabIndex = 0;
-            this.grd2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grd2_CellContentClick);
+            grd2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            grd2.Location = new Point(6, 22);
+            grd2.Name = "grd2";
+            grd2.RowTemplate.Height = 25;
+            grd2.Size = new Size(461, 90);
+            grd2.TabIndex = 0;
+            grd2.CellContentClick += grd2_CellContentClick;
             // 
             // groupBox4
             // 
@@ -292,21 +292,21 @@
             // 
             // dataGridView2
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(6, 22);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowTemplate.Height = 25;
-            this.dataGridView2.Size = new System.Drawing.Size(461, 231);
-            this.dataGridView2.TabIndex = 0;
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Location = new Point(6, 22);
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.RowTemplate.Height = 25;
+            dataGridView2.Size = new Size(461, 231);
+            dataGridView2.TabIndex = 0;
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(577, 506);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(123, 23);
-            this.button5.TabIndex = 9;
-            this.button5.Text = "Delivery bill";
-            this.button5.UseVisualStyleBackColor = true;
+            button5.Location = new Point(577, 506);
+            button5.Name = "button5";
+            button5.Size = new Size(123, 23);
+            button5.TabIndex = 9;
+            button5.Text = "Delivery bill";
+            button5.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
