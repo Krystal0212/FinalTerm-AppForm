@@ -21,7 +21,7 @@ namespace FormApp
             InitializeComponent();
         }
 
-        public AdminForm( String adminID )
+        public AdminForm(String adminID)
         {
             this.adminID = adminID;
             InitializeComponent();
@@ -34,12 +34,13 @@ namespace FormApp
         }
         private void htGRD(DataGridView g)
         {
-            if(g.Equals(grd1)) {
+            if (g.Equals(grd1))
+            {
                 String sql = "select * from CurrentGoods";
                 DataTable dt = Connection.selectQuery(sql);
                 g.DataSource = dt;
             }
-            else if(g.Equals(grd2))
+            else if (g.Equals(grd2))
             {
                 String sql = "select * from ImportedGoods";
                 DataTable dt = Connection.selectQuery(sql);
@@ -60,7 +61,7 @@ namespace FormApp
             dtp.Enabled = false;
 
             bAdd.Enabled = true;
-            
+
             bCancel.Enabled = false;
 
             bEdit.Enabled = true;
@@ -92,14 +93,14 @@ namespace FormApp
 
         private void grd2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
         }
 
         public int calculateDG1(int sl, ComboBox cb)
         {
             String sql = "Select Price from GoodstoImport where goodID = '" + cb1.SelectedValue.ToString() + "' ";
             DataTable dt = Connection.selectQuery(sql);
-            if(dt.Rows.Count == 0 )
+            if (dt.Rows.Count == 0)
             {
                 MessageBox.Show("cc");
                 return 0;
@@ -118,7 +119,7 @@ namespace FormApp
 
             txtGoodID.ReadOnly = true;
 
-            dtp.Enabled= true;
+            dtp.Enabled = true;
 
             txtGoodID.Text = getID("I", "ImportedGoods", "goodID");
 
@@ -191,7 +192,7 @@ namespace FormApp
 
             return dt.Rows[dt.Rows.Count - 1][0].ToString();
         }
-       
+
         private string getID(string ma, string tableName, string IDName)
         {
             string slang = "";
@@ -208,7 +209,7 @@ namespace FormApp
 
             return slang;
         }
- 
+
         private string generateID(int num)
         {
             string res = (++num).ToString();
@@ -228,18 +229,18 @@ namespace FormApp
             return res;
         }
 
-        private string convertDate (DateTimePicker d)
+        private string convertDate(DateTimePicker d)
         {
             DateTime date = d.Value;
             string day = date.Day.ToString();
             string month = date.Month.ToString();
 
-            if(date.Month < 10)
+            if (date.Month < 10)
             {
                 month = "0" + date.Month;
             }
 
-            if(date.Day < 10)
+            if (date.Day < 10)
             {
                 day = "0" + date.Day;
             }
@@ -248,7 +249,7 @@ namespace FormApp
             string final = year + "/" + month + "/" + day;
             string a = "";
             return final;
- 
+
         }
         private void bSave_Click(object sender, EventArgs e)
         {
@@ -262,7 +263,7 @@ namespace FormApp
                     MessageBox.Show("Goods already existed, please choose the others or change the quantity !");
                     return;
                 }
-                
+
                 s = "insert into ImportedGoods values ('" + txtGoodID.Text + "','" + cb1.Text + "','" + cb2.Text + "','" + txtTotalprice.Text + "','" + convertDate(dtp) + "')";
                 Connection.actionQuery(s);
             }
