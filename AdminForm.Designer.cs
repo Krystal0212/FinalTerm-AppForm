@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.grp1 = new System.Windows.Forms.GroupBox();
+            this.txtGoodID = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cb2 = new System.Windows.Forms.ComboBox();
             this.bSave = new System.Windows.Forms.Button();
             this.bEdit = new System.Windows.Forms.Button();
             this.bDelete = new System.Windows.Forms.Button();
@@ -49,7 +52,6 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.grp1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd1)).BeginInit();
@@ -61,7 +63,9 @@
             // 
             // grp1
             // 
-            this.grp1.Controls.Add(this.comboBox1);
+            this.grp1.Controls.Add(this.txtGoodID);
+            this.grp1.Controls.Add(this.label4);
+            this.grp1.Controls.Add(this.cb2);
             this.grp1.Controls.Add(this.bSave);
             this.grp1.Controls.Add(this.bEdit);
             this.grp1.Controls.Add(this.bDelete);
@@ -74,10 +78,55 @@
             this.grp1.Controls.Add(this.label1);
             this.grp1.Location = new System.Drawing.Point(12, 12);
             this.grp1.Name = "grp1";
-            this.grp1.Size = new System.Drawing.Size(473, 144);
+            this.grp1.Size = new System.Drawing.Size(473, 178);
             this.grp1.TabIndex = 0;
             this.grp1.TabStop = false;
             this.grp1.Text = "Import goods";
+            // 
+            // txtGoodID
+            // 
+            this.txtGoodID.Location = new System.Drawing.Point(73, 22);
+            this.txtGoodID.Name = "txtGoodID";
+            this.txtGoodID.Size = new System.Drawing.Size(158, 23);
+            this.txtGoodID.TabIndex = 13;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 28);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(50, 15);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Good ID";
+            // 
+            // cb2
+            // 
+            this.cb2.FormattingEnabled = true;
+            this.cb2.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20"});
+            this.cb2.Location = new System.Drawing.Point(73, 95);
+            this.cb2.Name = "cb2";
+            this.cb2.Size = new System.Drawing.Size(158, 23);
+            this.cb2.TabIndex = 11;
             // 
             // bSave
             // 
@@ -96,6 +145,7 @@
             this.bEdit.TabIndex = 9;
             this.bEdit.Text = "Edit";
             this.bEdit.UseVisualStyleBackColor = true;
+            this.bEdit.Click += new System.EventHandler(this.bEdit_Click);
             // 
             // bDelete
             // 
@@ -105,6 +155,7 @@
             this.bDelete.TabIndex = 8;
             this.bDelete.Text = "Delete";
             this.bDelete.UseVisualStyleBackColor = true;
+            this.bDelete.Click += new System.EventHandler(this.bDelete_Click);
             // 
             // bAdd
             // 
@@ -114,6 +165,7 @@
             this.bAdd.TabIndex = 7;
             this.bAdd.Text = "Add";
             this.bAdd.UseVisualStyleBackColor = true;
+            this.bAdd.Click += new System.EventHandler(this.bAdd_Click);
             // 
             // dtp
             // 
@@ -124,7 +176,7 @@
             // 
             // txtTotalprice
             // 
-            this.txtTotalprice.Location = new System.Drawing.Point(73, 90);
+            this.txtTotalprice.Location = new System.Drawing.Point(73, 134);
             this.txtTotalprice.Name = "txtTotalprice";
             this.txtTotalprice.Size = new System.Drawing.Size(158, 23);
             this.txtTotalprice.TabIndex = 5;
@@ -132,7 +184,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 98);
+            this.label3.Location = new System.Drawing.Point(6, 142);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 15);
             this.label3.TabIndex = 4;
@@ -141,7 +193,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 64);
+            this.label2.Location = new System.Drawing.Point(6, 99);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 15);
             this.label2.TabIndex = 2;
@@ -153,7 +205,7 @@
             this.cb1.Items.AddRange(new object[] {
             "Samsung Galaxy s23",
             "Ipad Pro 2018"});
-            this.cb1.Location = new System.Drawing.Point(73, 22);
+            this.cb1.Location = new System.Drawing.Point(73, 57);
             this.cb1.Name = "cb1";
             this.cb1.Size = new System.Drawing.Size(158, 23);
             this.cb1.TabIndex = 1;
@@ -161,7 +213,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 28);
+            this.label1.Location = new System.Drawing.Point(6, 63);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 15);
             this.label1.TabIndex = 0;
@@ -191,7 +243,7 @@
             this.groupBox3.Controls.Add(this.button3);
             this.groupBox3.Controls.Add(this.button2);
             this.groupBox3.Controls.Add(this.grd2);
-            this.groupBox3.Location = new System.Drawing.Point(12, 162);
+            this.groupBox3.Location = new System.Drawing.Point(12, 196);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(473, 148);
             this.groupBox3.TabIndex = 2;
@@ -213,7 +265,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(123, 23);
             this.button2.TabIndex = 8;
-            this.button2.Text = "Import your ticket";
+            this.button2.Text = "Export your ticket";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // grd2
@@ -229,7 +281,7 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.dataGridView2);
-            this.groupBox4.Location = new System.Drawing.Point(12, 316);
+            this.groupBox4.Location = new System.Drawing.Point(12, 350);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(473, 262);
             this.groupBox4.TabIndex = 3;
@@ -263,40 +315,11 @@
             this.button4.Text = "View reports";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20"});
-            this.comboBox1.Location = new System.Drawing.Point(73, 57);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(158, 23);
-            this.comboBox1.TabIndex = 11;
-            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(992, 584);
+            this.ClientSize = new System.Drawing.Size(992, 624);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.groupBox4);
@@ -342,6 +365,8 @@
         private Button bSave;
         private Button bEdit;
         private Button bDelete;
-        private ComboBox comboBox1;
+        private ComboBox cb2;
+        private TextBox txtGoodID;
+        private Label label4;
     }
 }

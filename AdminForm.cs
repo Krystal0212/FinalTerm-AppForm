@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,7 @@ namespace FormApp
     public partial class AdminForm : Form
     {
         string adminID;
+        int dk = 0;
         public AdminForm()
         {
             InitializeComponent();
@@ -47,7 +49,15 @@ namespace FormApp
 
         private void form_load()
         {
-            vohieuhoa(grp1, false);
+            cb1.Enabled = false;
+
+            cb2.Enabled = false;
+
+            txtTotalprice.Enabled = false;
+
+            txtGoodID.Enabled = false;
+
+            dtp.Enabled = false;
 
             bAdd.Enabled = true;
 
@@ -76,6 +86,37 @@ namespace FormApp
             bEdit.Enabled = true;
 
             bDelete.Enabled = true;
+        }
+
+        private void bAdd_Click(object sender, EventArgs e)
+        {
+            cb1.Focus();
+
+            txtTotalprice.Clear();
+
+            dk = 1;
+
+            bSave.Enabled = true;
+        }
+
+        private void bEdit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bDelete_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Do you want to delete?", "Delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                string sql = "delete from ImportedGoods where goodId ='" + txtGoodID.Text + "'";
+                Connection.actionQuery(sql);
+                form_load();
+            }
+        }
+
+        private void cb1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
