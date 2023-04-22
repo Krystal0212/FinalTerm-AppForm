@@ -251,14 +251,14 @@
             this.groupBox3.Controls.Add(this.grd2);
             this.groupBox3.Location = new System.Drawing.Point(12, 196);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(473, 148);
+            this.groupBox3.Size = new System.Drawing.Size(473, 196);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Recent added items";
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(244, 118);
+            this.button3.Location = new System.Drawing.Point(240, 167);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(123, 23);
             this.button3.TabIndex = 9;
@@ -267,7 +267,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(91, 119);
+            this.button2.Location = new System.Drawing.Point(93, 167);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(123, 23);
             this.button2.TabIndex = 8;
@@ -280,14 +280,14 @@
             this.grd2.Location = new System.Drawing.Point(6, 22);
             this.grd2.Name = "grd2";
             this.grd2.RowTemplate.Height = 25;
-            this.grd2.Size = new System.Drawing.Size(461, 90);
+            this.grd2.Size = new System.Drawing.Size(461, 139);
             this.grd2.TabIndex = 0;
-            this.grd2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grd2_CellContentClick);
+            this.grd2.Click += new System.EventHandler(this.grd2_Click);
             // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.dataGridView2);
-            this.groupBox4.Location = new System.Drawing.Point(12, 350);
+            this.groupBox4.Location = new System.Drawing.Point(12, 398);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(473, 262);
             this.groupBox4.TabIndex = 3;
@@ -325,7 +325,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(992, 624);
+            this.ClientSize = new System.Drawing.Size(992, 655);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.groupBox4);

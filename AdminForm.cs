@@ -60,7 +60,7 @@ namespace FormApp
             dtp.Enabled = false;
 
             bAdd.Enabled = true;
-
+            
             bCancel.Enabled = false;
 
             bEdit.Enabled = true;
@@ -92,15 +92,7 @@ namespace FormApp
 
         private void grd2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtGoodID.Text = grd2.CurrentRow.Cells[0].Value.ToString();
-            cb1.Text = grd2.CurrentRow.Cells[1].Value.ToString();
-            cb2.Text = grd2.CurrentRow.Cells[2].Value.ToString();
-            txtTotalprice.Text = grd2.CurrentRow.Cells[3].Value.ToString();
-            dtp.Text = grd2.CurrentRow.Cells[4].Value.ToString();
-
-            bEdit.Enabled = true;
-
-            bDelete.Enabled = true;
+            
         }
 
         public int calculateDG1(int sl, ComboBox cb)
@@ -124,10 +116,11 @@ namespace FormApp
 
             cb2.Enabled = true;
 
-            txtGoodID.Enabled = true;
+            txtGoodID.ReadOnly = true;
 
             dtp.Enabled= true;
 
+            txtGoodID.Text = getID("I", "ImportedGoods", "goodID");
 
             dk = 1;
 
@@ -171,9 +164,17 @@ namespace FormApp
             form_load();
         }
 
-        public Boolean isExist(string txt)
+        Boolean countCheck(int data)
         {
-            string sql = "select username from account where goodID = N'" + txt + "' ";
+            if (data == 1)
+            {
+                return true;
+            }
+            return false;
+        }
+        public Boolean isExist(string txt, string tableName, string IDName)
+        {
+            string sql = " select * from " + tableName + " where " + IDName + " = N'" + txt + "' ";
             DataTable dt = Connection.selectQuery(sql);
             if (countCheck(dt.Rows.Count))
             {
@@ -190,11 +191,11 @@ namespace FormApp
 
             return dt.Rows[dt.Rows.Count - 1][0].ToString();
         }
-
+       
         private string getID(string ma, string tableName, string IDName)
         {
             string slang = "";
-            if (isExist(ma + "0001"))
+            if (!isExist(ma + "0001", tableName, IDName))
             {
                 slang = ma + "0001";
             }
@@ -207,7 +208,7 @@ namespace FormApp
 
             return slang;
         }
-
+ 
         private string generateID(int num)
         {
             string res = (++num).ToString();
@@ -251,6 +252,7 @@ namespace FormApp
         }
         private void bSave_Click(object sender, EventArgs e)
         {
+
             if (dk == 1)
             {
                 string s = "select * from ImportedGoods where goodId = '" + txtGoodID.Text + "' ";
@@ -260,7 +262,7 @@ namespace FormApp
                     MessageBox.Show("Goods already existed, please choose the others or change the quantity !");
                     return;
                 }
-               
+                
                 s = "insert into ImportedGoods values ('" + txtGoodID.Text + "','" + cb1.Text + "','" + cb2.Text + "','" + txtTotalprice.Text + "','" + convertDate(dtp) + "')";
                 Connection.actionQuery(s);
             }
@@ -277,6 +279,19 @@ namespace FormApp
         private void cb2_TextChanged(object sender, EventArgs e)
         {
             txtTotalprice.Text = calculateDG1(Int32.Parse(cb2.Text), cb1).ToString();
+        }
+
+        private void grd2_Click(object sender, EventArgs e)
+        {
+            txtGoodID.Text = grd2.CurrentRow.Cells[0].Value.ToString();
+            cb1.Text = grd2.CurrentRow.Cells[1].Value.ToString();
+            cb2.Text = grd2.CurrentRow.Cells[2].Value.ToString();
+            txtTotalprice.Text = grd2.CurrentRow.Cells[3].Value.ToString();
+            dtp.Text = grd2.CurrentRow.Cells[4].Value.ToString();
+
+            bEdit.Enabled = true;
+
+            bDelete.Enabled = true;
         }
     }
 }
