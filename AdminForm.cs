@@ -63,14 +63,21 @@ namespace FormApp
 
             bCancel.Enabled = false;
 
-            bEdit.Enabled = false;
+            bEdit.Enabled = true;
 
             bDelete.Enabled = false;
 
             bSave.Enabled = false;
 
             htGRD(grd1);
+
             htGRD(grd2);
+
+            string sql = "select * from GoodstoImport";
+            DataTable dt = Connection.selectQuery(sql);
+            cb1.DataSource = dt;
+            cb1.DisplayMember = "goodName";
+            cb1.ValueMember = "goodID";
         }
         private void AdminForm_Load(object sender, EventArgs e)
         {
@@ -85,11 +92,30 @@ namespace FormApp
 
         private void grd2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            txtGoodID.Text = grd2.CurrentRow.Cells[0].Value.ToString();
+            cb1.Text = grd2.CurrentRow.Cells[1].Value.ToString();
+            cb2.Text = grd2.CurrentRow.Cells[2].Value.ToString();
+            txtTotalprice.Text = grd2.CurrentRow.Cells[3].Value.ToString();
+            dtp.Text = grd2.CurrentRow.Cells[4].Value.ToString();
+
             bEdit.Enabled = true;
 
             bDelete.Enabled = true;
         }
 
+        public int calculateDG1(int sl, ComboBox cb)
+        {
+            String sql = "Select Price from GoodstoImport where goodID = '" + cb1.SelectedValue.ToString() + "' ";
+            DataTable dt = Connection.selectQuery(sql);
+            if(dt.Rows.Count == 0 )
+            {
+                MessageBox.Show("cc");
+                return 0;
+            }
+            int dg = Int32.Parse(dt.Rows[0][0].ToString());
+            int result = sl * dg;
+            return result;
+        }
         private void bAdd_Click(object sender, EventArgs e)
         {
             cb1.Focus();
@@ -97,6 +123,9 @@ namespace FormApp
             cb1.Enabled = true;
 
             cb2.Enabled = true;
+
+            txtGoodID.Enabled = true;
+
             dtp.Enabled= true;
 
 
@@ -140,6 +169,58 @@ namespace FormApp
         private void bCancel_Click(object sender, EventArgs e)
         {
             form_load();
+        }
+
+        private string convertDate (DateTimePicker d)
+        {
+            DateTime date = d.Value;
+            string day = date.Day.ToString();
+            string month = date.Month.ToString();
+
+            if(date.Month < 10)
+            {
+                month = "0" + date.Month;
+            }
+
+            if(date.Day < 10)
+            {
+                day = "0" + date.Day;
+            }
+
+            string year = date.Year.ToString();
+            string final = year + "/" + month + "/" + day;
+            string a = "";
+            return final;
+ 
+        }
+        private void bSave_Click(object sender, EventArgs e)
+        {
+            if (dk == 1)
+            {
+                string s = "select * from ImportedGoods where goodId = '" + txtGoodID.Text + "' ";
+                DataTable data = Connection.selectQuery(s);
+                if (data.Rows.Count > 0)
+                {
+                    MessageBox.Show("Goods already existed, please choose the others or change the quantity !");
+                    return;
+                }
+               
+                s = "insert into ImportedGoods values ('" + txtGoodID.Text + "','" + cb1.Text + "','" + cb2.Text + "','" + txtTotalprice.Text + "','" + convertDate(dtp) + "')";
+                Connection.actionQuery(s);
+            }
+            else //dk =2
+            {
+                //Update
+                string s = "update ImportedGoods set goodID = '" + txtGoodID.Text + "', set goodName = '" + cb1.Text + "',set Quantity = '" + cb1.Text + ",set Price = '" + txtTotalprice.Text + " , added_date = '" + convertDate(dtp) + "' where goodId = '" + txtGoodID.Text + "'";
+                Connection.actionQuery(s);
+            }
+            form_load();
+        }
+
+
+        private void cb2_TextChanged(object sender, EventArgs e)
+        {
+            txtTotalprice.Text = calculateDG1(Int32.Parse(cb2.Text), cb1).ToString();
         }
     }
 }

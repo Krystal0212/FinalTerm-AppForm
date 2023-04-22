@@ -34,7 +34,7 @@ create table ImportedGoods(
 	goodName nvarchar(30),
 	Quantity int,
 	Price int,
-	added_date date
+	added_date datetime
 )
 
 create table GoodstoImport(

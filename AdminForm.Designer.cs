@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.grp1 = new System.Windows.Forms.GroupBox();
+            this.bCancel = new System.Windows.Forms.Button();
             this.txtGoodID = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cb2 = new System.Windows.Forms.ComboBox();
@@ -52,7 +53,6 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.bCancel = new System.Windows.Forms.Button();
             this.grp1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd1)).BeginInit();
@@ -85,6 +85,16 @@
             this.grp1.TabStop = false;
             this.grp1.Text = "Import goods";
             // 
+            // bCancel
+            // 
+            this.bCancel.Location = new System.Drawing.Point(298, 133);
+            this.bCancel.Name = "bCancel";
+            this.bCancel.Size = new System.Drawing.Size(91, 23);
+            this.bCancel.TabIndex = 14;
+            this.bCancel.Text = "Cancel";
+            this.bCancel.UseVisualStyleBackColor = true;
+            this.bCancel.Click += new System.EventHandler(this.bCancel_Click);
+            // 
             // txtGoodID
             // 
             this.txtGoodID.Location = new System.Drawing.Point(73, 22);
@@ -105,30 +115,26 @@
             // 
             this.cb2.FormattingEnabled = true;
             this.cb2.Items.AddRange(new object[] {
-            "1",
             "2",
-            "3",
             "4",
-            "5",
             "6",
-            "7",
             "8",
-            "9",
             "10",
-            "11",
             "12",
-            "13",
             "14",
-            "15",
             "16",
-            "17",
             "18",
-            "19",
-            "20"});
+            "20",
+            "22",
+            "24",
+            "26",
+            "28",
+            "30"});
             this.cb2.Location = new System.Drawing.Point(73, 95);
             this.cb2.Name = "cb2";
             this.cb2.Size = new System.Drawing.Size(158, 23);
             this.cb2.TabIndex = 11;
+            this.cb2.TextChanged += new System.EventHandler(this.cb2_TextChanged);
             // 
             // bSave
             // 
@@ -138,6 +144,7 @@
             this.bSave.TabIndex = 10;
             this.bSave.Text = "Save";
             this.bSave.UseVisualStyleBackColor = true;
+            this.bSave.Click += new System.EventHandler(this.bSave_Click);
             // 
             // bEdit
             // 
@@ -186,7 +193,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 142);
+            this.label3.Location = new System.Drawing.Point(6, 137);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 15);
             this.label3.TabIndex = 4;
@@ -204,9 +211,6 @@
             // cb1
             // 
             this.cb1.FormattingEnabled = true;
-            this.cb1.Items.AddRange(new object[] {
-            "Samsung Galaxy s23",
-            "Ipad Pro 2018"});
             this.cb1.Location = new System.Drawing.Point(73, 57);
             this.cb1.Name = "cb1";
             this.cb1.Size = new System.Drawing.Size(158, 23);
@@ -316,16 +320,6 @@
             this.button4.TabIndex = 10;
             this.button4.Text = "View reports";
             this.button4.UseVisualStyleBackColor = true;
-            // 
-            // bCancel
-            // 
-            this.bCancel.Location = new System.Drawing.Point(298, 133);
-            this.bCancel.Name = "bCancel";
-            this.bCancel.Size = new System.Drawing.Size(91, 23);
-            this.bCancel.TabIndex = 14;
-            this.bCancel.Text = "Cancel";
-            this.bCancel.UseVisualStyleBackColor = true;
-            this.bCancel.Click += new System.EventHandler(this.bCancel_Click);
             // 
             // AdminForm
             // 
