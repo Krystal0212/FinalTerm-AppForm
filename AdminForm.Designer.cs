@@ -52,6 +52,7 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.bCancel = new System.Windows.Forms.Button();
             this.grp1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd1)).BeginInit();
@@ -63,6 +64,7 @@
             // 
             // grp1
             // 
+            this.grp1.Controls.Add(this.bCancel);
             this.grp1.Controls.Add(this.txtGoodID);
             this.grp1.Controls.Add(this.label4);
             this.grp1.Controls.Add(this.cb2);
@@ -315,6 +317,16 @@
             this.button4.Text = "View reports";
             this.button4.UseVisualStyleBackColor = true;
             // 
+            // bCancel
+            // 
+            this.bCancel.Location = new System.Drawing.Point(298, 133);
+            this.bCancel.Name = "bCancel";
+            this.bCancel.Size = new System.Drawing.Size(91, 23);
+            this.bCancel.TabIndex = 14;
+            this.bCancel.Text = "Cancel";
+            this.bCancel.UseVisualStyleBackColor = true;
+            this.bCancel.Click += new System.EventHandler(this.bCancel_Click);
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -368,5 +380,6 @@
         private ComboBox cb2;
         private TextBox txtGoodID;
         private Label label4;
+        private Button bCancel;
     }
 }

@@ -61,6 +61,8 @@ namespace FormApp
 
             bAdd.Enabled = true;
 
+            bCancel.Enabled = false;
+
             bEdit.Enabled = false;
 
             bDelete.Enabled = false;
@@ -92,15 +94,31 @@ namespace FormApp
         {
             cb1.Focus();
 
-            txtTotalprice.Clear();
+            cb1.Enabled = true;
+
+            cb2.Enabled = true;
+            dtp.Enabled= true;
+
 
             dk = 1;
 
             bSave.Enabled = true;
+            bCancel.Enabled = true;
+
         }
 
         private void bEdit_Click(object sender, EventArgs e)
         {
+            cb1.Focus();
+            cb1.Enabled = true;
+
+            cb2.Enabled = true;
+            dtp.Enabled = true;
+
+            dk = 2;
+
+            bSave.Enabled = true;
+            bCancel.Enabled = true;
 
         }
 
@@ -117,6 +135,11 @@ namespace FormApp
         private void cb1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void bCancel_Click(object sender, EventArgs e)
+        {
+            form_load();
         }
     }
 }
