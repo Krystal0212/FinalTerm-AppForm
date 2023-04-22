@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace FormApp
@@ -22,7 +21,7 @@ namespace FormApp
             InitializeComponent();
         }
 
-        public AdminForm(String adminID)
+        public AdminForm( String adminID )
         {
             this.adminID = adminID;
             InitializeComponent();
@@ -35,13 +34,12 @@ namespace FormApp
         }
         private void htGRD(DataGridView g)
         {
-            if (g.Equals(grd1))
-            {
+            if(g.Equals(grd1)) {
                 String sql = "select * from CurrentGoods";
                 DataTable dt = Connection.selectQuery(sql);
                 g.DataSource = dt;
             }
-            else if (g.Equals(grd2))
+            else if(g.Equals(grd2))
             {
                 String sql = "select * from ImportedGoods";
                 DataTable dt = Connection.selectQuery(sql);

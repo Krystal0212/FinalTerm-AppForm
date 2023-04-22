@@ -36,8 +36,6 @@ namespace FormApp
             return false;
         }
 
-        
-
         private void bLogin_Click(object sender, EventArgs e)
         {
             string sql = "select username, accType from account where username = N'" + textBox1.Text + "' and pass = N'" + textBox2.Text + "' ";
