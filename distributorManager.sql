@@ -34,8 +34,9 @@ create table ImportedGoods(
 	goodName nvarchar(30),
 	Quantity int,
 	Price int,
-	added_date datetime
+	added_date date not null default CURRENT_TIMESTAMP
 )
+drop table ImportedGoods
 
 create table GoodstoImport(
 	goodID nvarchar(30),
@@ -50,4 +51,9 @@ insert into GoodstoImport values ('GI0001','Samsung Galaxy S23', 5, 26000000),
 
 select * from GoodstoImport
 
-select * from CurrentGoods
+select * from ImportedGoods
+
+Select Price from GoodstoImport
+
+insert into ImportedGoods values ('I0004','Samsung Galaxy S23','12','312000000','2023/11/01')
+select * from ImportedGoods where goodID = N'I0001' 
