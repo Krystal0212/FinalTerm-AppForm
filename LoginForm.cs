@@ -6,7 +6,7 @@ namespace FormApp
 {
     public partial class LoginForm : Form
     {
- 
+
         public LoginForm()
         {
             InitializeComponent();
@@ -29,7 +29,7 @@ namespace FormApp
 
         Boolean countCheck(int data)
         {
-            if (data==1)
+            if (data == 1)
             {
                 return true;
             }
@@ -41,13 +41,14 @@ namespace FormApp
             string sql = "select username, accType from account where username = N'" + textBox1.Text + "' and pass = N'" + textBox2.Text + "' ";
             DataTable dt = Connection.selectQuery(sql);
 
-            if (countCheck(dt.Rows.Count) && isAdmin(dt.Rows[0][1])) {
+            if (countCheck(dt.Rows.Count) && isAdmin(dt.Rows[0][1]))
+            {
 
                 string adminID = dt.Rows[0][0].ToString();
                 this.Close();
                 AdminForm adminForm = new AdminForm(adminID);
                 adminForm.Show();
-                
+
             }
             else if (countCheck(dt.Rows.Count))
             {
@@ -64,7 +65,7 @@ namespace FormApp
                 DialogResult result = MessageBox.Show(message, title, buttons);
                 if (result == DialogResult.Yes)
                 {
-          
+
                 }
                 else
                 {
