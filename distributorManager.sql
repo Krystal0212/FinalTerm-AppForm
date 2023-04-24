@@ -62,12 +62,4 @@ select goodId, goodName, Quantity, Price as Price_per_item from CurrentGoods
 select goodId as 'Good ID', goodName as 'Good Name', Quantity, Price as 'Price / Item' from CurrentGoods
 select goodId as 'Good ID', goodName as 'Good Name', Quantity, Price as 'Price / Item', added_date from ImportedGoods
 
-select * from GoodstoImport
-delete from GoodstoImport
 
-select * from ImportedGoods order by goodID asc
-
-Select Price from GoodstoImport
-
-insert into ImportedGoods values ('I0004','Samsung Galaxy S23','12','312000000','2023/11/01')
-select * from ImportedGoods where goodID = N'I0001'
