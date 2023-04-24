@@ -36,13 +36,13 @@ namespace FormApp
         {
             if (g.Equals(grd1))
             {
-                String sql = "select * from CurrentGoods";
+                String sql = "select goodId as 'Good ID', goodName as 'Good Name', Quantity, Price as 'Price / Item' from CurrentGoods";
                 DataTable dt = Connection.selectQuery(sql);
                 g.DataSource = dt;
             }
             else if (g.Equals(grd2))
             {
-                String sql = "select * from ImportedGoods";
+                String sql = "select goodId as 'Good ID', goodName as 'Good Name', Quantity, Price as 'Total Price', added_date as 'Added Date' from ImportedGoods";
                 DataTable dt = Connection.selectQuery(sql);
                 g.DataSource = dt;
             }
@@ -79,6 +79,12 @@ namespace FormApp
             cb1.DataSource = dt;
             cb1.DisplayMember = "goodName";
             cb1.ValueMember = "goodID";
+
+            string sql2 = "select username from account where username = '" + adminID + "'";
+            DataTable dt2 = Connection.selectQuery(sql2);
+
+            user.Text = dt2.Rows[0][0].ToString();
+            user.Text = "Welcome " + user.Text;
         }
         private void AdminForm_Load(object sender, EventArgs e)
         {
@@ -270,7 +276,7 @@ namespace FormApp
             else //dk =2
             {
                 //Update
-                string s = "update ImportedGoods set goodID = '" + txtGoodID.Text + "', set goodName = '" + cb1.Text + "',set Quantity = '" + cb1.Text + ",set Price = '" + txtTotalprice.Text + " , added_date = '" + convertDate(dtp) + "' where goodId = '" + txtGoodID.Text + "'";
+                string s = "update ImportedGoods set goodID = '" + txtGoodID.Text + "', goodName = '" + cb1.Text + "',Quantity = '" + cb2.Text + "',Price = '" + txtTotalprice.Text + "' , added_date = '" + convertDate(dtp) + "' where goodId = '" + txtGoodID.Text + "'";
                 Connection.actionQuery(s);
             }
             form_load();
@@ -293,6 +299,28 @@ namespace FormApp
             bEdit.Enabled = true;
 
             bDelete.Enabled = true;
+        }
+
+        private void AdminForm_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bClear_Click(object sender, EventArgs e)
+        {
+            string sql = "Select * from ImportedGoods";
+            DataTable data = Connection.selectQuery(sql);
+            if (data.Rows.Count > 0)
+            {
+                string sql2 = "Delete from ImportedGoods";
+                Connection.actionQuery(sql2);
+                form_load();
+                MessageBox.Show("Succesful deleted all of your added goods !");
+            }
+            else
+            {
+                MessageBox.Show("Nothing here to be deleted !");
+            }
         }
     }
 }

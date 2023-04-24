@@ -38,7 +38,7 @@ namespace FormApp
 
         private void bLogin_Click(object sender, EventArgs e)
         {
-            string sql = "select username, accType from account where username = N'" + textBox1.Text + "' and pass = N'" + textBox2.Text + "' ";
+            string sql = "select username, accType from account where username = N'" + txtUsername.Text + "' and pass = N'" + txtPass.Text + "' ";
             DataTable dt = Connection.selectQuery(sql);
 
             if (countCheck(dt.Rows.Count) && isAdmin(dt.Rows[0][1]))
@@ -50,13 +50,6 @@ namespace FormApp
                 adminForm.Show();
 
             }
-            else if (countCheck(dt.Rows.Count))
-            {
-                string userID = dt.Rows[0][0].ToString();
-                UserForm userForm = new UserForm(userID);
-                userForm.Show();
-                this.Close();
-            }
             else
             {
                 string message = "Invalid information, do you want to try again ?";
@@ -65,13 +58,14 @@ namespace FormApp
                 DialogResult result = MessageBox.Show(message, title, buttons);
                 if (result == DialogResult.Yes)
                 {
-
+                    txtPass.Clear();
+                    txtUsername.Clear();
                 }
                 else
                 {
                     Application.Exit();
                 }
-            }
+            } 
             // pop up message
 
         }
