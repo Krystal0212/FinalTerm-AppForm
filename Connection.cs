@@ -14,7 +14,8 @@ namespace FormApp
         public static void connect()
         {
             // DESKTOP-502NHKM\\DUNG
-            string s = "initial catalog = distributorManage; data source = DESKTOP-502NHKM\\DUNG; integrated security = true";
+            // ACERLT
+            string s = "initial catalog = distributorManage; data source = ACERLT; integrated security = true";
             cn = new SqlConnection(s);
             cn.Open();
 

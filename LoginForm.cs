@@ -65,9 +65,30 @@ namespace FormApp
                 {
                     Application.Exit();
                 }
-            } 
+            }
             // pop up message
 
+        }
+
+        private void txtUsername_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtUsername_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                txtPass.Focus();
+            }
+        }
+
+        private void txtPass_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                bLogin.Focus();
+            }
         }
     }
 }

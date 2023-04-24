@@ -29,72 +29,73 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
-            this.txtUsername = new System.Windows.Forms.TextBox();
-            this.txtPass = new System.Windows.Forms.TextBox();
-            this.Username = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.bLogin = new System.Windows.Forms.Button();
-            this.bCancel = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            txtUsername = new TextBox();
+            txtPass = new TextBox();
+            Username = new Label();
+            label1 = new Label();
+            label2 = new Label();
+            bLogin = new Button();
+            bCancel = new Button();
+            SuspendLayout();
             // 
             // txtUsername
             // 
-            resources.ApplyResources(this.txtUsername, "txtUsername");
-            this.txtUsername.Name = "txtUsername";
+            resources.ApplyResources(txtUsername, "txtUsername");
+            txtUsername.Name = "txtUsername";
+            txtUsername.KeyPress += txtUsername_KeyPress;
             // 
             // txtPass
             // 
-            resources.ApplyResources(this.txtPass, "txtPass");
-            this.txtPass.Name = "txtPass";
+            resources.ApplyResources(txtPass, "txtPass");
+            txtPass.Name = "txtPass";
+            txtPass.KeyPress += txtPass_KeyPress;
             // 
             // Username
             // 
-            resources.ApplyResources(this.Username, "Username");
-            this.Username.Name = "Username";
+            resources.ApplyResources(Username, "Username");
+            Username.Name = "Username";
             // 
             // label1
             // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
+            resources.ApplyResources(label1, "label1");
+            label1.Name = "label1";
             // 
             // label2
             // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
+            resources.ApplyResources(label2, "label2");
+            label2.Name = "label2";
             // 
             // bLogin
             // 
-            resources.ApplyResources(this.bLogin, "bLogin");
-            this.bLogin.Name = "bLogin";
-            this.bLogin.UseVisualStyleBackColor = true;
-            this.bLogin.Click += new System.EventHandler(this.bLogin_Click);
+            resources.ApplyResources(bLogin, "bLogin");
+            bLogin.Name = "bLogin";
+            bLogin.UseVisualStyleBackColor = true;
+            bLogin.Click += bLogin_Click;
             // 
             // bCancel
             // 
-            resources.ApplyResources(this.bCancel, "bCancel");
-            this.bCancel.Name = "bCancel";
-            this.bCancel.UseVisualStyleBackColor = true;
-            this.bCancel.Click += new System.EventHandler(this.bCancel_Click);
+            resources.ApplyResources(bCancel, "bCancel");
+            bCancel.Name = "bCancel";
+            bCancel.UseVisualStyleBackColor = true;
+            bCancel.Click += bCancel_Click;
             // 
             // LoginForm
             // 
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ControlBox = false;
-            this.Controls.Add(this.bCancel);
-            this.Controls.Add(this.bLogin);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.Username);
-            this.Controls.Add(this.txtPass);
-            this.Controls.Add(this.txtUsername);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "LoginForm";
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleMode = AutoScaleMode.Font;
+            ControlBox = false;
+            Controls.Add(bCancel);
+            Controls.Add(bLogin);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(Username);
+            Controls.Add(txtPass);
+            Controls.Add(txtUsername);
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "LoginForm";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
