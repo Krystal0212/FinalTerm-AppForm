@@ -48,13 +48,14 @@
             this.grd1 = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.bClear = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.bExport = new System.Windows.Forms.Button();
             this.grd2 = new System.Windows.Forms.DataGridView();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.grd3 = new System.Windows.Forms.DataGridView();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ticketLabel = new System.Windows.Forms.Label();
             this.grd4 = new System.Windows.Forms.DataGridView();
             this.user = new System.Windows.Forms.Label();
             this.grp1.SuspendLayout();
@@ -254,7 +255,7 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.bClear);
-            this.groupBox3.Controls.Add(this.button2);
+            this.groupBox3.Controls.Add(this.bExport);
             this.groupBox3.Controls.Add(this.grd2);
             this.groupBox3.Location = new System.Drawing.Point(12, 196);
             this.groupBox3.Name = "groupBox3";
@@ -273,14 +274,15 @@
             this.bClear.UseVisualStyleBackColor = true;
             this.bClear.Click += new System.EventHandler(this.bClear_Click);
             // 
-            // button2
+            // bExport
             // 
-            this.button2.Location = new System.Drawing.Point(93, 167);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(123, 23);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Export your ticket";
-            this.button2.UseVisualStyleBackColor = true;
+            this.bExport.Location = new System.Drawing.Point(93, 167);
+            this.bExport.Name = "bExport";
+            this.bExport.Size = new System.Drawing.Size(123, 23);
+            this.bExport.TabIndex = 8;
+            this.bExport.Text = "Export your ticket";
+            this.bExport.UseVisualStyleBackColor = true;
+            this.bExport.Click += new System.EventHandler(this.bExport_Click);
             // 
             // grd2
             // 
@@ -310,6 +312,7 @@
             this.grd3.RowTemplate.Height = 25;
             this.grd3.Size = new System.Drawing.Size(461, 231);
             this.grd3.TabIndex = 0;
+            this.grd3.Click += new System.EventHandler(this.grd3_Click);
             // 
             // button5
             // 
@@ -331,6 +334,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.ticketLabel);
             this.groupBox1.Controls.Add(this.grd4);
             this.groupBox1.Location = new System.Drawing.Point(491, 357);
             this.groupBox1.Name = "groupBox1";
@@ -339,13 +343,24 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Detail ticket items";
             // 
+            // ticketLabel
+            // 
+            this.ticketLabel.AutoSize = true;
+            this.ticketLabel.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.ticketLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ticketLabel.Location = new System.Drawing.Point(264, 17);
+            this.ticketLabel.Name = "ticketLabel";
+            this.ticketLabel.Size = new System.Drawing.Size(69, 21);
+            this.ticketLabel.TabIndex = 1;
+            this.ticketLabel.Text = "Ticket ID";
+            // 
             // grd4
             // 
             this.grd4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grd4.Location = new System.Drawing.Point(6, 22);
+            this.grd4.Location = new System.Drawing.Point(6, 41);
             this.grd4.Name = "grd4";
             this.grd4.RowTemplate.Height = 25;
-            this.grd4.Size = new System.Drawing.Size(606, 272);
+            this.grd4.Size = new System.Drawing.Size(606, 253);
             this.grd4.TabIndex = 0;
             // 
             // user
@@ -355,9 +370,9 @@
             this.user.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.user.Location = new System.Drawing.Point(986, 12);
             this.user.Name = "user";
-            this.user.Size = new System.Drawing.Size(52, 21);
+            this.user.Size = new System.Drawing.Size(81, 21);
             this.user.TabIndex = 12;
-            this.user.Text = "label5";
+            this.user.Text = "Username";
             // 
             // AdminForm
             // 
@@ -386,6 +401,7 @@
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grd3)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -406,7 +422,7 @@
         private Button bAdd;
         private GroupBox groupBox3;
         private Button bClear;
-        private Button button2;
+        private Button bExport;
         private DataGridView grd2;
         private GroupBox groupBox4;
         private DataGridView grd3;
@@ -422,5 +438,6 @@
         private GroupBox groupBox1;
         private DataGridView grd4;
         private Label user;
+        private Label ticketLabel;
     }
 }

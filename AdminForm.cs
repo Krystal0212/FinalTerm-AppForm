@@ -36,16 +36,23 @@ namespace FormApp
         {
             if (g.Equals(grd1))
             {
-                String sql = "select goodId as 'Good ID', goodName as 'Good Name', Quantity, Price as 'Price / Item' from CurrentGoods";
+                String sql = "select goodId as 'Good ID', goodName as 'Good Name', Quantity, Price as 'Price / Item' from CurrentGoods order by goodID asc";
                 DataTable dt = Connection.selectQuery(sql);
                 g.DataSource = dt;
             }
             else if (g.Equals(grd2))
             {
-                String sql = "select goodId as 'Good ID', goodName as 'Good Name', Quantity, Price as 'Total Price', added_date as 'Added Date' from ImportedGoods";
+                String sql = "select goodId as 'Good ID', goodName as 'Good Name', Quantity, Price as 'Total Price', added_date as 'Added Date' from ImportedGoods order by goodID asc";
                 DataTable dt = Connection.selectQuery(sql);
                 g.DataSource = dt;
             }
+            else if (g.Equals(grd3))
+            {
+                String sql = "select ticketID as 'Ticket ID', username as 'Added by' from Ticket order by ticketID asc";
+                DataTable dt = Connection.selectQuery(sql);
+                g.DataSource = dt;
+            }
+            
         }
 
         private void form_load()
@@ -74,6 +81,7 @@ namespace FormApp
 
             htGRD(grd2);
 
+            htGRD(grd3);
             string sql = "select * from GoodstoImport";
             DataTable dt = Connection.selectQuery(sql);
             cb1.DataSource = dt;
@@ -163,6 +171,7 @@ namespace FormApp
 
         private void cb1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            cb2.Focus();
 
         }
 
@@ -322,5 +331,96 @@ namespace FormApp
                 MessageBox.Show("Nothing here to be deleted !");
             }
         }
+
+        private void insert_DetailTicket()
+        {
+            string sql2 = "insert into Detail_Ticket (goodID, goodName,Quantity, Price, added_date)\r\nselect * from importedgoods";
+            Connection.actionQuery(sql2);
+        }
+
+        private void update_DetailTicketID(string ticketID)
+        {
+            string sql3 = "update Detail_Ticket set ticketID = '" + ticketID + "' where ticketID is Null";
+            Connection.actionQuery(sql3);
+
+        }
+
+        private void StockChange(string ticketID)
+        {
+            string sql = "select goodID, goodName, Quantity from CurrentGoods order by goodID asc";
+            DataTable data1 = Connection.selectQuery(sql);
+
+            string sql2 = "select goodID, goodName, Quantity, Price from Detail_Ticket where ticketID = '" + ticketID + "' order by goodID asc";
+            DataTable data2 = Connection.selectQuery(sql2);
+
+            for (int i = 0; i < data2.Rows.Count; i++)
+            {
+                data1 = Connection.selectQuery(sql);
+                data2 = Connection.selectQuery(sql2);
+                string goodName = data2.Rows[i][1].ToString();
+                int checker = 0;
+                for (int j = 0; j < data1.Rows.Count; j++)
+                {
+                    int newQuantity = 0;
+                    if (goodName.Equals(data1.Rows[j][1].ToString()))
+                    {
+                        newQuantity = Int32.Parse(data1.Rows[j][2].ToString()) + Int32.Parse(data2.Rows[i][2].ToString());
+                        string sql3 = "update CurrentGoods set quantity = '"+ newQuantity+ "' where goodName = '" + goodName + "'";
+                        Connection.actionQuery(sql3);
+                    }
+                    else if(goodName.Equals(data1.Rows[j][1].ToString()) == false)
+                    {
+                        checker = checker + 1;
+                        if(checker == data1.Rows.Count)
+                        {
+                            string sql4 = "insert into CurrentGoods values('" + getID("I", "CurrentGoods", "goodID") + "', '" + data2.Rows[i][1].ToString() + "', '" + Int32.Parse(data2.Rows[i][2].ToString()) + "', '" + Int32.Parse(data2.Rows[i][3].ToString()) / Int32.Parse(data2.Rows[i][2].ToString()) + "')";
+                            Connection.actionQuery(sql4);
+                        }
+                    }
+                }
+            }
+        }
+        private void bExport_Click(object sender, EventArgs e)
+        {
+            string sq3 = "Select * from ImportedGoods";
+            DataTable data = Connection.selectQuery(sq3);
+            if (data.Rows.Count > 0)
+            {
+                string sql = "insert into Ticket values('" + getID("TK", "Ticket", "ticketID") + "','" + adminID + "')";
+                Connection.actionQuery(sql);
+                form_load();
+
+                insert_DetailTicket();
+
+                string sql2 = "select ticketID from Ticket order by ticketID desc";
+                DataTable data2 = Connection.selectQuery(sql2);
+                update_DetailTicketID(data2.Rows[0][0].ToString());
+
+                StockChange(data2.Rows[0][0].ToString());
+                htGRD(grd1);
+            }
+            else
+            {
+                MessageBox.Show("Nothing here to be exported !");
+            }
+
+            
+
+        }
+
+        private void htDetail_Ticket(string ticketID)
+        {
+
+            String sql = "select goodId as 'Good ID', goodName as 'Good Name', Quantity, Price as 'Total Price', added_date as 'Added Date' from Detail_Ticket where ticketID = '" + ticketID + "' order by goodID asc ";
+            DataTable dt = Connection.selectQuery(sql);
+            grd4.DataSource = dt;
+
+        }
+        private void grd3_Click(object sender, EventArgs e)
+        {
+            ticketLabel.Text = grd3.CurrentRow.Cells[0].Value.ToString();
+            htDetail_Ticket(ticketLabel.Text);
+        }
+
     }
 }
