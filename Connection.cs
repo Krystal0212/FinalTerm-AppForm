@@ -14,8 +14,11 @@ namespace FormApp
         public static void connect()
         {
             // DESKTOP-502NHKM\\DUNG
+            //string s = "initial catalog = distributorManage; data source = DESKTOP-502NHKM\\DUNG; integrated security = true; Min Pool Size=5;Max Pool Size=1000;Connect Timeout=60";
+
+
             // ACERLT
-            string s = "initial catalog = distributorManage; data source = DESKTOP-502NHKM\\DUNG; integrated security = true; Min Pool Size=5;Max Pool Size=1000;Connect Timeout=60";
+            string s = "initial catalog = distributorManage; data source = ACERLT; integrated security = true; Min Pool Size=5;Max Pool Size=1000;Connect Timeout=60";
             cn = new SqlConnection(s);
             cn.Open();
 
